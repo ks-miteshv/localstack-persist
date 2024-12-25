@@ -45,14 +45,14 @@ aws configure
 ### Create s3 bucket
 
 ```sh
-aws --endpoint-url=http://localhost:4566 s3 mb s3://maze-storage
-# Note: 'maze-storage' is bucket-name
+aws --endpoint-url=http://localhost:4566 s3 mb s3://storage-name
+# Note: 'storage-name' is bucket-name
 ```
 
 ### Attach an ACL to the bucket so it is readable
 
 ```sh
-aws --endpoint-url=http://localhost:4566 s3api put-bucket-acl --bucket maze-storage --acl public-read
+aws --endpoint-url=http://localhost:4566 s3api put-bucket-acl --bucket storage-name --acl public-read
 ```
 
 ### List s3 bucket
@@ -60,22 +60,22 @@ aws --endpoint-url=http://localhost:4566 s3api put-bucket-acl --bucket maze-stor
 ```sh
 aws s3 ls --endpoint-url http://localhost:4566
 
-aws --endpoint-url=http://localhost:4566 s3 ls s3://maze-storage
+aws --endpoint-url=http://localhost:4566 s3 ls s3://storage-name
 
 # OR using awslocal
 awslocal s3 ls
 
-awslocal s3 ls maze-storage
+awslocal s3 ls storage-name
 ```
 
 ### Remove directory/file from s3 bucket
 
 ```sh
 # To remove dir:
-aws --endpoint-url=http://localhost:4566 s3 rm s3://maze-storage/53779c28-3dd7-4e7d-bc2c-95aab8c1a67e/temp/ --recursive 
+aws --endpoint-url=http://localhost:4566 s3 rm s3://storage-name/53779c28-3dd7-4e7d-bc2c-95aab8c1a67e/temp/ --recursive 
 
 # To remove file:
-aws --endpoint-url=http://localhost:4566 s3 rm s3://maze-storage/53779c28-3dd7-4e7d-bc2c-95aab8c1a67e/temp.txt
+aws --endpoint-url=http://localhost:4566 s3 rm s3://storage-name/53779c28-3dd7-4e7d-bc2c-95aab8c1a67e/temp.txt
 ```
 
 ## AWS queue
@@ -122,7 +122,7 @@ aws --endpoint-url=http://localhost:4576 sqs receive-message --queue-url http://
 ## Generate pre-signed url from terminal
 
 ```sh
-aws s3 presign s3://maze-storage/presentation.ppt --endpoint-url https://s3.wasabisys.com
+aws s3 presign s3://storage-name/presentation.ppt --endpoint-url https://s3.wasabisys.com
 ```
 
 ## ***s3 - setup for minio and localstack:***
@@ -134,16 +134,16 @@ AWS_S3_ACCESS_KEY_ID=minio
 AWS_S3_SECRET_ACCESS_KEY=minio123
 AWS_S3_DEFAULT_REGION=us-east-1
 AWS_S3_MAZE_BUCKET=maze
-AWS_S3_URL=http://192.168.17.214:9001/maze
-AWS_S3_ENDPOINT=http://192.168.17.214:9001
+AWS_S3_URL=http://localhost:9001/maze
+AWS_S3_ENDPOINT=http://localhost:9001
 ```
 
 ```dotenv
 AWS_S3_ACCESS_KEY_ID=foo
 AWS_S3_SECRET_ACCESS_KEY=bar
 AWS_S3_DEFAULT_REGION=us-east-1
-AWS_S3_MAZE_BUCKET=maze-storage
-AWS_S3_URL=http://localhost:4566/maze-storage
+AWS_S3_MAZE_BUCKET=storage-name
+AWS_S3_URL=http://localhost:4566/storage-name
 AWS_S3_ENDPOINT=http://localhost:4566
 ```
 
