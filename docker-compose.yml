@@ -2,6 +2,7 @@ version: "3.8"
 services:
   localstack:
     image: gresau/localstack-persist:4 # instead of localstack/localstack:4
+    container_name: localstack_s3
     ports:
       - "4566:4566"
     volumes:
