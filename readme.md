@@ -25,7 +25,7 @@ docker-compose logs -f
 ## Get localstack bash shell
 
 ```sh
-docker exec -it localstack-persist_localstack_1 bash
+docker exec -it localstack_s3 bash
 ```
 
 ## To set configuration
