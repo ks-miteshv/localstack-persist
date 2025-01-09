@@ -36,7 +36,7 @@ aws configure
 # This will ask you to set following things:
 # - AWS Access Key ID [****]:
 # - AWS Secret Access Key [****]:
-# - Default region name [us-west-1]: us-west-2
+# - Default region name [us-west-1]: us-east-1
 # - Default output format [None]:
 ```
 
@@ -66,6 +66,19 @@ aws --endpoint-url=http://localhost:4566 s3 ls s3://storage-name
 awslocal s3 ls
 
 awslocal s3 ls storage-name
+```
+
+### Attach an ACL to the bucket so it is private
+
+```sh
+aws --endpoint-url=http://localhost:4566 s3api put-bucket-acl --bucket private-bucket-name --acl private
+```
+
+### Delete an S3 bucket
+
+```sh
+aws --endpoint-url=http://localhost:4566 s3 rb s3://storage-name --force
+# Note: 'storage-name' is the name of your bucket
 ```
 
 ### Remove directory/file from s3 bucket
